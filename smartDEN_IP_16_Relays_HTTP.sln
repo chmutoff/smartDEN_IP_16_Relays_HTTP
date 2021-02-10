@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartDEN_IP_16_Relays_HTTP", "smartDEN_IP_16_Relays_HTTP\smartDEN_IP_16_Relays_HTTP.csproj", "{2C1AA586-2D0C-45A1-BE6C-17D721DEF09B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C1AA586-2D0C-45A1-BE6C-17D721DEF09B}.Debug|x86.ActiveCfg = Debug|x86
+		{2C1AA586-2D0C-45A1-BE6C-17D721DEF09B}.Debug|x86.Build.0 = Debug|x86
+		{2C1AA586-2D0C-45A1-BE6C-17D721DEF09B}.Release|x86.ActiveCfg = Release|x86
+		{2C1AA586-2D0C-45A1-BE6C-17D721DEF09B}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
