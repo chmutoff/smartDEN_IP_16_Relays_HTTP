@@ -172,6 +172,7 @@ namespace smartDEN_IP_16_Relays_HTTP
                     refreshButton.Text = "Connect";
                     isConnected = false;
                     statusLabel.Text = "Wrong password. Try again.";
+                    statusBox.BackColor = Color.Red;
                     relaysGroupBox.Enabled = false;
                 }
                 else if (alreadyLoggedIndex >= 0)
@@ -179,6 +180,7 @@ namespace smartDEN_IP_16_Relays_HTTP
                     refreshButton.Text = "Connect";
                     isConnected = false;
                     statusLabel.Text = "Administrator is already logged in.";
+                    statusBox.BackColor = Color.Red;
                     relaysGroupBox.Enabled = false;
                 }
                 else if (currentStateIndex >= 0)
@@ -192,6 +194,7 @@ namespace smartDEN_IP_16_Relays_HTTP
                     refreshButton.Text = "Connect";
                     isConnected = false;
                     statusLabel.Text = "Failed to get data.";
+                    statusBox.BackColor = Color.Red;
                 }
             }
             else
@@ -202,7 +205,8 @@ namespace smartDEN_IP_16_Relays_HTTP
 
         public string GetStateRequest(string parameter)
         {
-            statusLabel.Text = "Connecting...";
+            //statusLabel.Text = "Connecting...";
+            statusBox.BackColor = Color.Red;
             //relaysGroupBox.Enabled = false;
             Application.DoEvents();
             string url = "http://" + ipTextBox.Text + ":" + portTextBox.Text + "/current_state.xml?pw=" + passwordTextBox.Text + parameter;
@@ -218,7 +222,8 @@ namespace smartDEN_IP_16_Relays_HTTP
                 responseFromServer = reader.ReadToEnd();
                 refreshButton.Text = "Refresh";
                 isConnected = true;
-                statusLabel.Text = "States updated successfully.";
+                //statusLabel.Text = "States updated successfully.";
+                statusBox.BackColor = Color.Green;
                 response.Close();
                 request.Abort();
                 if ("http://" + ipTextBox.Text + ":" + portTextBox.Text + "/login_info.xml" == response.ResponseUri.ToString())
@@ -230,7 +235,8 @@ namespace smartDEN_IP_16_Relays_HTTP
             {
                 relaysGroupBox.Enabled = false;
                 refreshButton.Text = "Connect";
-                statusLabel.Text = "Failed to connect. Check your Settings and Internet Connection.";
+                statusLabel.Text = "Failed to connect.";
+                statusBox.BackColor = Color.Red;
                 request.Abort();
                 return "NULL";
             }
