@@ -90,6 +90,9 @@ namespace smartDEN_IP_16_Relays_HTTP
             bool ApostropheRegistered = RegisterHotKey(
                 this.Handle, 8, 0x0000, (int)Keys.OemQuotes
             );
+            bool TildeRegistered = RegisterHotKey(
+                this.Handle, 9, 0x0000, (int)Keys.Oemtilde
+            );
 
 
             // Verify if both hotkeys were succesfully registered, if not, show message in the console
@@ -121,6 +124,11 @@ namespace smartDEN_IP_16_Relays_HTTP
             if (!ApostropheRegistered)
             {
                 Console.WriteLine("Global Hotkey ' couldn't be registered !");
+            }
+
+            if (!TildeRegistered)
+            {
+                Console.WriteLine("Global Hotkey ` couldn't be registered !");
             }
         }
 
@@ -171,6 +179,7 @@ namespace smartDEN_IP_16_Relays_HTTP
                         updateStates(GetStateRequest("&Relay3=" + Convert.ToInt32(!relay3.Checked).ToString()));
                         break;
                     case 8:
+                    case 9:
                         updateStates(GetStateRequest("&Relay4=1"));
                         updateStates(GetStateRequest("&Relay1=1"));
                         updateStates(GetStateRequest("&Relay2=1"));
