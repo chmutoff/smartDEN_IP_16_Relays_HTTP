@@ -20,7 +20,7 @@ namespace smartDEN_IP_16_Relays_HTTP
         public Form1()
         {
             InitializeComponent();
-
+            
             var timer = new Timer();
             timer.Interval = 3000;
             timer.Tick += new EventHandler(timer_Tick);
@@ -61,16 +61,13 @@ namespace smartDEN_IP_16_Relays_HTTP
 
             }
 
-            // Set an unique id to your Hotkey, it will be used to
-            // identify which hotkey was pressed in your code to execute something
-            int FirstHotkeyId = 1;
             // Set the Hotkey triggerer the F9 key 
             // Expected an integer value for F9: 0x78, but you can convert the Keys.KEY to its int value
             // See: https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
             int FirstHotKeyKey = (int)Keys.F9;
             // Register the "F9" hotkey
             Boolean F9Registered = RegisterHotKey(
-                this.Handle, FirstHotkeyId, 0x0000, FirstHotKeyKey
+                this.Handle, 1, 0x0000, FirstHotKeyKey
             );
 
             // Repeat the same process but with F10
@@ -78,17 +75,22 @@ namespace smartDEN_IP_16_Relays_HTTP
                 this.Handle, 2, 0x0000, (int)Keys.F10
             );
 
-            /*
-            // Repeat the same process but with F11
-            Boolean F11Registered = RegisterHotKey(
-                this.Handle, 3, 0x0000, (int)Keys.F11
+            bool ComaRegistered = RegisterHotKey(
+                this.Handle, 5, 0x0000, (int)Keys.Oemcomma
             );
 
-            // Repeat the same process but with F12            
-            Boolean F12Registered = RegisterHotKey(
-                this.Handle, 4, 0x0000, (int)Keys.F12
+            bool DotRegistered = RegisterHotKey(
+                this.Handle, 6, 0x0000, (int)Keys.OemPeriod
             );
-            */
+
+            bool SemicolonRegistered = RegisterHotKey(
+                this.Handle, 7, 0x0000, (int)Keys.OemSemicolon
+            );
+            
+            bool ApostropheRegistered = RegisterHotKey(
+                this.Handle, 8, 0x0000, (int)Keys.OemQuotes
+            );
+
 
             // Verify if both hotkeys were succesfully registered, if not, show message in the console
             if (!F9Registered)
@@ -100,19 +102,26 @@ namespace smartDEN_IP_16_Relays_HTTP
             {
                 Console.WriteLine("Global Hotkey F10 couldn't be registered !");
             }
-
-            /*
-            if (!F11Registered)
-            {
-                Console.WriteLine("Global Hotkey F11 couldn't be registered !");
-            }
-
             
-            if (!F12Registered)
+            if (!ComaRegistered)
             {
-                Console.WriteLine("Global Hotkey F12 couldn't be registered !");
+                Console.WriteLine("Global Hotkey , couldn't be registered !");
             }
-            */
+
+            if (!DotRegistered)
+            {
+                Console.WriteLine("Global Hotkey . couldn't be registered !");
+            }
+
+            if (!SemicolonRegistered)
+            {
+                Console.WriteLine("Global Hotkey ; couldn't be registered !");
+            }
+
+            if (!ApostropheRegistered)
+            {
+                Console.WriteLine("Global Hotkey ' couldn't be registered !");
+            }
         }
 
         public void timer_Tick(object sender, EventArgs e)
@@ -132,10 +141,10 @@ namespace smartDEN_IP_16_Relays_HTTP
                 // Handle what will happen once a respective hotkey is pressed                
                 switch (id)
                 {
-                    case 1:
-                        updateStates(GetStateRequest("&Relay6=1"));
+                    case 1:                        
+                        updateStates(GetStateRequest("&Relay6=1"));                        
                         break;
-                    case 2:
+                    case 2:                        
                         updateStates(GetStateRequest("&Relay6=0"));
                         break;
                     case 3:
@@ -151,6 +160,21 @@ namespace smartDEN_IP_16_Relays_HTTP
                         lastActiveRelayId += 8;
                         disableOtherHalf(lastActiveRelayId + 1);
                         updateStates(GetStateRequest("&Relay" + (lastActiveRelayId + 1) + "=1"));
+                        break;
+                    case 5:
+                        updateStates(GetStateRequest("&Relay1=" + Convert.ToInt32(!relay1.Checked).ToString()));
+                        break;
+                    case 6:
+                        updateStates(GetStateRequest("&Relay2=" + Convert.ToInt32(!relay2.Checked).ToString()));
+                        break;
+                    case 7:
+                        updateStates(GetStateRequest("&Relay3=" + Convert.ToInt32(!relay3.Checked).ToString()));
+                        break;
+                    case 8:
+                        updateStates(GetStateRequest("&Relay4=1"));
+                        updateStates(GetStateRequest("&Relay1=1"));
+                        updateStates(GetStateRequest("&Relay2=1"));
+                        updateStates(GetStateRequest("&Relay3=1"));                        
                         break;
                 }
                 hotKeyLock = false;

@@ -99,6 +99,7 @@
             // 
             this.passwordTextBox.Location = new System.Drawing.Point(128, 65);
             this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.ReadOnly = true;
             this.passwordTextBox.Size = new System.Drawing.Size(144, 20);
             this.passwordTextBox.TabIndex = 5;
             this.passwordTextBox.Text = "admin";
@@ -108,6 +109,7 @@
             // 
             this.portTextBox.Location = new System.Drawing.Point(128, 43);
             this.portTextBox.Name = "portTextBox";
+            this.portTextBox.ReadOnly = true;
             this.portTextBox.Size = new System.Drawing.Size(144, 20);
             this.portTextBox.TabIndex = 4;
             this.portTextBox.Text = "80";
@@ -117,6 +119,7 @@
             // 
             this.ipTextBox.Location = new System.Drawing.Point(128, 21);
             this.ipTextBox.Name = "ipTextBox";
+            this.ipTextBox.ReadOnly = true;
             this.ipTextBox.Size = new System.Drawing.Size(144, 20);
             this.ipTextBox.TabIndex = 3;
             this.ipTextBox.Text = "192.168.1.28";
@@ -489,7 +492,7 @@
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(55, 13);
             this.versionLabel.TabIndex = 3;
-            this.versionLabel.Text = "v15.02.21";
+            this.versionLabel.Text = "v06.05.21";
             // 
             // statusBox
             // 
