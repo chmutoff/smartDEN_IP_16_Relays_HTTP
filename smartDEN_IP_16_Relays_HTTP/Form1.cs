@@ -150,10 +150,10 @@ namespace smartDEN_IP_16_Relays_HTTP
                 switch (id)
                 {
                     case 1:                        
-                        updateStates(GetStateRequest("&Relay6=1"));                        
+                        updateStates(GetStateRequest("&Relay6=0"));                        
                         break;
                     case 2:                        
-                        updateStates(GetStateRequest("&Relay6=0"));
+                        updateStates(GetStateRequest("&Relay6=1"));
                         break;
                     case 3:
                         lastActiveRelayId += 1;
