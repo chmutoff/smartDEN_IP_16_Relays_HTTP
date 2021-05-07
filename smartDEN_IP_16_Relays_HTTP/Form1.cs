@@ -356,7 +356,15 @@ namespace smartDEN_IP_16_Relays_HTTP
         private void relay4_CheckedChanged(object sender, EventArgs e)
         {
             if (userClick == true)
+            {
                 updateStates(GetStateRequest("&Relay4=" + Convert.ToInt32(relay4.Checked).ToString()));
+                if (relay4.Checked)
+                {
+                    updateStates(GetStateRequest("&Relay1=1"));
+                    updateStates(GetStateRequest("&Relay2=1"));
+                    updateStates(GetStateRequest("&Relay3=1"));
+                }
+            }
         }
 
         private void relay5_CheckedChanged(object sender, EventArgs e)

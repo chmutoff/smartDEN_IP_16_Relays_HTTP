@@ -458,7 +458,7 @@
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(55, 13);
             this.versionLabel.TabIndex = 3;
-            this.versionLabel.Text = "v06.05.21";
+            this.versionLabel.Text = "v07.05.21";
             // 
             // statusBox
             // 
