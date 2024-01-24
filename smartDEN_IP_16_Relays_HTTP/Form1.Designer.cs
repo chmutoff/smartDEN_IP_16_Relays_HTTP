@@ -38,14 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.relay12 = new System.Windows.Forms.CheckBox();
-            this.relay107 = new System.Windows.Forms.CheckBox();
-            this.relay108 = new System.Windows.Forms.CheckBox();
-            this.relay105 = new System.Windows.Forms.CheckBox();
-            this.relay104 = new System.Windows.Forms.CheckBox();
-            this.relay103 = new System.Windows.Forms.CheckBox();
-            this.relay102 = new System.Windows.Forms.CheckBox();
-            this.relay101 = new System.Windows.Forms.CheckBox();
-            this.relay106 = new System.Windows.Forms.CheckBox();
             this.relay5 = new System.Windows.Forms.CheckBox();
             this.relay6 = new System.Windows.Forms.CheckBox();
             this.relay7 = new System.Windows.Forms.CheckBox();
@@ -65,6 +57,11 @@
             this.versionLabel = new System.Windows.Forms.Label();
             this.statusBox = new System.Windows.Forms.Label();
             this.relaysGroupBox = new System.Windows.Forms.GroupBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.relaysGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -159,115 +156,19 @@
             // 
             this.relay12.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay12.AutoSize = true;
-            this.relay12.Location = new System.Drawing.Point(154, 88);
+            this.relay12.Location = new System.Drawing.Point(390, 320);
             this.relay12.Name = "relay12";
             this.relay12.Size = new System.Drawing.Size(59, 23);
             this.relay12.TabIndex = 24;
             this.relay12.Text = "Relay 12";
             this.relay12.UseVisualStyleBackColor = true;
-            this.relay12.CheckedChanged += new System.EventHandler(this.relay12_CheckedChanged_1);
-            // 
-            // relay107
-            // 
-            this.relay107.Appearance = System.Windows.Forms.Appearance.Button;
-            this.relay107.AutoSize = true;
-            this.relay107.Location = new System.Drawing.Point(6, 158);
-            this.relay107.Name = "relay107";
-            this.relay107.Size = new System.Drawing.Size(65, 23);
-            this.relay107.TabIndex = 23;
-            this.relay107.Text = "Relay 107";
-            this.relay107.UseVisualStyleBackColor = true;
-            this.relay107.CheckedChanged += new System.EventHandler(this.relay107_CheckedChanged);
-            // 
-            // relay108
-            // 
-            this.relay108.Appearance = System.Windows.Forms.Appearance.Button;
-            this.relay108.AutoSize = true;
-            this.relay108.Location = new System.Drawing.Point(6, 183);
-            this.relay108.Name = "relay108";
-            this.relay108.Size = new System.Drawing.Size(65, 23);
-            this.relay108.TabIndex = 22;
-            this.relay108.Text = "Relay 108";
-            this.relay108.UseVisualStyleBackColor = true;
-            this.relay108.CheckedChanged += new System.EventHandler(this.relay108_CheckedChanged);
-            // 
-            // relay105
-            // 
-            this.relay105.Appearance = System.Windows.Forms.Appearance.Button;
-            this.relay105.AutoSize = true;
-            this.relay105.Location = new System.Drawing.Point(6, 111);
-            this.relay105.Name = "relay105";
-            this.relay105.Size = new System.Drawing.Size(65, 23);
-            this.relay105.TabIndex = 21;
-            this.relay105.Text = "Relay 105";
-            this.relay105.UseVisualStyleBackColor = true;
-            this.relay105.CheckedChanged += new System.EventHandler(this.relay105_CheckedChanged);
-            // 
-            // relay104
-            // 
-            this.relay104.Appearance = System.Windows.Forms.Appearance.Button;
-            this.relay104.AutoSize = true;
-            this.relay104.Location = new System.Drawing.Point(6, 88);
-            this.relay104.Name = "relay104";
-            this.relay104.Size = new System.Drawing.Size(65, 23);
-            this.relay104.TabIndex = 20;
-            this.relay104.Text = "Relay 104";
-            this.relay104.UseVisualStyleBackColor = true;
-            this.relay104.CheckedChanged += new System.EventHandler(this.relay104_CheckedChanged);
-            // 
-            // relay103
-            // 
-            this.relay103.Appearance = System.Windows.Forms.Appearance.Button;
-            this.relay103.AutoSize = true;
-            this.relay103.Location = new System.Drawing.Point(6, 65);
-            this.relay103.Name = "relay103";
-            this.relay103.Size = new System.Drawing.Size(65, 23);
-            this.relay103.TabIndex = 19;
-            this.relay103.Text = "Relay 103";
-            this.relay103.UseVisualStyleBackColor = true;
-            this.relay103.CheckedChanged += new System.EventHandler(this.relay103_CheckedChanged);
-            // 
-            // relay102
-            // 
-            this.relay102.Appearance = System.Windows.Forms.Appearance.Button;
-            this.relay102.AutoSize = true;
-            this.relay102.Location = new System.Drawing.Point(6, 42);
-            this.relay102.Name = "relay102";
-            this.relay102.Size = new System.Drawing.Size(65, 23);
-            this.relay102.TabIndex = 18;
-            this.relay102.Text = "Relay 102";
-            this.relay102.UseVisualStyleBackColor = true;
-            this.relay102.CheckedChanged += new System.EventHandler(this.relay102_CheckedChanged);
-            // 
-            // relay101
-            // 
-            this.relay101.Appearance = System.Windows.Forms.Appearance.Button;
-            this.relay101.AutoSize = true;
-            this.relay101.Location = new System.Drawing.Point(6, 19);
-            this.relay101.Name = "relay101";
-            this.relay101.Size = new System.Drawing.Size(65, 23);
-            this.relay101.TabIndex = 17;
-            this.relay101.Text = "Relay 101";
-            this.relay101.UseVisualStyleBackColor = true;
-            this.relay101.CheckedChanged += new System.EventHandler(this.relay101_CheckedChanged);
-            // 
-            // relay106
-            // 
-            this.relay106.Appearance = System.Windows.Forms.Appearance.Button;
-            this.relay106.AutoSize = true;
-            this.relay106.Location = new System.Drawing.Point(6, 135);
-            this.relay106.Name = "relay106";
-            this.relay106.Size = new System.Drawing.Size(65, 23);
-            this.relay106.TabIndex = 16;
-            this.relay106.Text = "Relay 106";
-            this.relay106.UseVisualStyleBackColor = true;
-            this.relay106.CheckedChanged += new System.EventHandler(this.relay106_CheckedChanged);
+            this.relay12.CheckedChanged += new System.EventHandler(this.relay12_CheckedChanged);
             // 
             // relay5
             // 
             this.relay5.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay5.AutoSize = true;
-            this.relay5.Location = new System.Drawing.Point(80, 111);
+            this.relay5.Location = new System.Drawing.Point(316, 343);
             this.relay5.Name = "relay5";
             this.relay5.Size = new System.Drawing.Size(53, 23);
             this.relay5.TabIndex = 15;
@@ -279,7 +180,7 @@
             // 
             this.relay6.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay6.AutoSize = true;
-            this.relay6.Location = new System.Drawing.Point(80, 135);
+            this.relay6.Location = new System.Drawing.Point(316, 367);
             this.relay6.Name = "relay6";
             this.relay6.Size = new System.Drawing.Size(53, 23);
             this.relay6.TabIndex = 14;
@@ -291,7 +192,7 @@
             // 
             this.relay7.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay7.AutoSize = true;
-            this.relay7.Location = new System.Drawing.Point(80, 158);
+            this.relay7.Location = new System.Drawing.Point(316, 390);
             this.relay7.Name = "relay7";
             this.relay7.Size = new System.Drawing.Size(53, 23);
             this.relay7.TabIndex = 13;
@@ -303,11 +204,11 @@
             // 
             this.relay8.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay8.AutoSize = true;
-            this.relay8.Location = new System.Drawing.Point(80, 183);
+            this.relay8.Location = new System.Drawing.Point(266, 73);
             this.relay8.Name = "relay8";
-            this.relay8.Size = new System.Drawing.Size(53, 23);
+            this.relay8.Size = new System.Drawing.Size(59, 23);
             this.relay8.TabIndex = 12;
-            this.relay8.Text = "Relay 8";
+            this.relay8.Text = "Relay 08";
             this.relay8.UseVisualStyleBackColor = true;
             this.relay8.CheckedChanged += new System.EventHandler(this.relay8_CheckedChanged);
             // 
@@ -315,7 +216,7 @@
             // 
             this.relay11.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay11.AutoSize = true;
-            this.relay11.Location = new System.Drawing.Point(154, 65);
+            this.relay11.Location = new System.Drawing.Point(390, 297);
             this.relay11.Name = "relay11";
             this.relay11.Size = new System.Drawing.Size(59, 23);
             this.relay11.TabIndex = 11;
@@ -327,7 +228,7 @@
             // 
             this.relay13.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay13.AutoSize = true;
-            this.relay13.Location = new System.Drawing.Point(154, 111);
+            this.relay13.Location = new System.Drawing.Point(6, 73);
             this.relay13.Name = "relay13";
             this.relay13.Size = new System.Drawing.Size(59, 23);
             this.relay13.TabIndex = 9;
@@ -339,7 +240,7 @@
             // 
             this.relay14.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay14.AutoSize = true;
-            this.relay14.Location = new System.Drawing.Point(154, 135);
+            this.relay14.Location = new System.Drawing.Point(71, 73);
             this.relay14.Name = "relay14";
             this.relay14.Size = new System.Drawing.Size(59, 23);
             this.relay14.TabIndex = 8;
@@ -351,7 +252,7 @@
             // 
             this.relay15.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay15.AutoSize = true;
-            this.relay15.Location = new System.Drawing.Point(154, 158);
+            this.relay15.Location = new System.Drawing.Point(136, 73);
             this.relay15.Name = "relay15";
             this.relay15.Size = new System.Drawing.Size(59, 23);
             this.relay15.TabIndex = 7;
@@ -363,7 +264,7 @@
             // 
             this.relay16.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay16.AutoSize = true;
-            this.relay16.Location = new System.Drawing.Point(154, 183);
+            this.relay16.Location = new System.Drawing.Point(201, 73);
             this.relay16.Name = "relay16";
             this.relay16.Size = new System.Drawing.Size(59, 23);
             this.relay16.TabIndex = 6;
@@ -375,7 +276,7 @@
             // 
             this.relay10.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay10.AutoSize = true;
-            this.relay10.Location = new System.Drawing.Point(154, 42);
+            this.relay10.Location = new System.Drawing.Point(390, 274);
             this.relay10.Name = "relay10";
             this.relay10.Size = new System.Drawing.Size(59, 23);
             this.relay10.TabIndex = 5;
@@ -387,7 +288,7 @@
             // 
             this.relay9.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay9.AutoSize = true;
-            this.relay9.Location = new System.Drawing.Point(154, 19);
+            this.relay9.Location = new System.Drawing.Point(390, 251);
             this.relay9.Name = "relay9";
             this.relay9.Size = new System.Drawing.Size(59, 23);
             this.relay9.TabIndex = 4;
@@ -399,7 +300,7 @@
             // 
             this.relay4.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay4.AutoSize = true;
-            this.relay4.Location = new System.Drawing.Point(80, 88);
+            this.relay4.Location = new System.Drawing.Point(316, 320);
             this.relay4.Name = "relay4";
             this.relay4.Size = new System.Drawing.Size(53, 23);
             this.relay4.TabIndex = 3;
@@ -411,7 +312,7 @@
             // 
             this.relay3.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay3.AutoSize = true;
-            this.relay3.Location = new System.Drawing.Point(80, 65);
+            this.relay3.Location = new System.Drawing.Point(316, 297);
             this.relay3.Name = "relay3";
             this.relay3.Size = new System.Drawing.Size(53, 23);
             this.relay3.TabIndex = 2;
@@ -423,7 +324,7 @@
             // 
             this.relay2.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay2.AutoSize = true;
-            this.relay2.Location = new System.Drawing.Point(80, 42);
+            this.relay2.Location = new System.Drawing.Point(316, 274);
             this.relay2.Name = "relay2";
             this.relay2.Size = new System.Drawing.Size(53, 23);
             this.relay2.TabIndex = 1;
@@ -435,7 +336,7 @@
             // 
             this.relay1.Appearance = System.Windows.Forms.Appearance.Button;
             this.relay1.AutoSize = true;
-            this.relay1.Location = new System.Drawing.Point(80, 19);
+            this.relay1.Location = new System.Drawing.Point(316, 251);
             this.relay1.Name = "relay1";
             this.relay1.Size = new System.Drawing.Size(53, 23);
             this.relay1.TabIndex = 0;
@@ -445,7 +346,7 @@
             // 
             // statusLabel
             // 
-            this.statusLabel.Location = new System.Drawing.Point(26, 218);
+            this.statusLabel.Location = new System.Drawing.Point(25, 114);
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(145, 16);
             this.statusLabel.TabIndex = 2;
@@ -454,17 +355,17 @@
             // versionLabel
             // 
             this.versionLabel.AutoSize = true;
-            this.versionLabel.Location = new System.Drawing.Point(168, 221);
+            this.versionLabel.Location = new System.Drawing.Point(283, 116);
             this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(55, 13);
+            this.versionLabel.Size = new System.Drawing.Size(49, 13);
             this.versionLabel.TabIndex = 3;
-            this.versionLabel.Text = "v07.05.21";
+            this.versionLabel.Text = "24.01.24";
             // 
             // statusBox
             // 
             this.statusBox.AutoSize = true;
             this.statusBox.BackColor = System.Drawing.Color.Red;
-            this.statusBox.Location = new System.Drawing.Point(7, 221);
+            this.statusBox.Location = new System.Drawing.Point(6, 117);
             this.statusBox.Name = "statusBox";
             this.statusBox.Size = new System.Drawing.Size(13, 13);
             this.statusBox.TabIndex = 4;
@@ -472,49 +373,104 @@
             // 
             // relaysGroupBox
             // 
-            this.relaysGroupBox.Controls.Add(this.relay12);
-            this.relaysGroupBox.Controls.Add(this.relay107);
-            this.relaysGroupBox.Controls.Add(this.relay108);
-            this.relaysGroupBox.Controls.Add(this.relay105);
-            this.relaysGroupBox.Controls.Add(this.relay104);
-            this.relaysGroupBox.Controls.Add(this.relay103);
-            this.relaysGroupBox.Controls.Add(this.relay102);
-            this.relaysGroupBox.Controls.Add(this.relay101);
-            this.relaysGroupBox.Controls.Add(this.relay106);
-            this.relaysGroupBox.Controls.Add(this.relay5);
-            this.relaysGroupBox.Controls.Add(this.relay6);
-            this.relaysGroupBox.Controls.Add(this.relay7);
-            this.relaysGroupBox.Controls.Add(this.relay8);
-            this.relaysGroupBox.Controls.Add(this.relay11);
+            this.relaysGroupBox.Controls.Add(this.checkBox3);
+            this.relaysGroupBox.Controls.Add(this.checkBox2);
+            this.relaysGroupBox.Controls.Add(this.checkBox1);
+            this.relaysGroupBox.Controls.Add(this.label5);
+            this.relaysGroupBox.Controls.Add(this.label4);
             this.relaysGroupBox.Controls.Add(this.relay13);
             this.relaysGroupBox.Controls.Add(this.relay14);
             this.relaysGroupBox.Controls.Add(this.relay15);
+            this.relaysGroupBox.Controls.Add(this.relay8);
             this.relaysGroupBox.Controls.Add(this.relay16);
-            this.relaysGroupBox.Controls.Add(this.relay10);
-            this.relaysGroupBox.Controls.Add(this.relay9);
-            this.relaysGroupBox.Controls.Add(this.relay4);
-            this.relaysGroupBox.Controls.Add(this.relay3);
-            this.relaysGroupBox.Controls.Add(this.relay2);
-            this.relaysGroupBox.Controls.Add(this.relay1);
             this.relaysGroupBox.Enabled = false;
             this.relaysGroupBox.Location = new System.Drawing.Point(4, 1);
             this.relaysGroupBox.Name = "relaysGroupBox";
-            this.relaysGroupBox.Size = new System.Drawing.Size(219, 217);
+            this.relaysGroupBox.Size = new System.Drawing.Size(331, 108);
             this.relaysGroupBox.TabIndex = 1;
             this.relaysGroupBox.TabStop = false;
-            this.relaysGroupBox.Text = "Relays";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(201, 28);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(30, 23);
+            this.checkBox3.TabIndex = 27;
+            this.checkBox3.Text = "A3";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(146, 28);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(30, 23);
+            this.checkBox2.TabIndex = 26;
+            this.checkBox2.Text = "A2";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(96, 28);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(30, 23);
+            this.checkBox1.TabIndex = 25;
+            this.checkBox1.Text = "A1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(145, 57);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "BEV";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.Control;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(138, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "STACK";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(227, 243);
+            this.ClientSize = new System.Drawing.Size(341, 134);
+            this.Controls.Add(this.relay12);
             this.Controls.Add(this.statusBox);
+            this.Controls.Add(this.relay5);
             this.Controls.Add(this.versionLabel);
+            this.Controls.Add(this.relay6);
             this.Controls.Add(this.statusLabel);
+            this.Controls.Add(this.relay7);
             this.Controls.Add(this.relaysGroupBox);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.relay11);
+            this.Controls.Add(this.relay1);
+            this.Controls.Add(this.relay2);
+            this.Controls.Add(this.relay3);
+            this.Controls.Add(this.relay4);
+            this.Controls.Add(this.relay9);
+            this.Controls.Add(this.relay10);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "SmartDEN IP 16 Relays";
             this.groupBox1.ResumeLayout(false);
@@ -553,17 +509,14 @@
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.Label versionLabel;
-        private System.Windows.Forms.CheckBox relay106;
-        private System.Windows.Forms.CheckBox relay107;
-        private System.Windows.Forms.CheckBox relay108;
-        private System.Windows.Forms.CheckBox relay105;
-        private System.Windows.Forms.CheckBox relay104;
-        private System.Windows.Forms.CheckBox relay103;
-        private System.Windows.Forms.CheckBox relay102;
-        private System.Windows.Forms.CheckBox relay101;
         private System.Windows.Forms.CheckBox relay12;
         private System.Windows.Forms.Label statusBox;
         private System.Windows.Forms.GroupBox relaysGroupBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

@@ -12,9 +12,7 @@ namespace smartDEN_IP_16_Relays_HTTP
         [DllImport("user32.dll")]
         public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
         public bool userClick = false;
-        public bool isConnected = false;
-        public int lastActiveRelayId = 7;
-
+        public bool isConnected = false;        
         private bool hotKeyLock = false;
 
         public Form1()
@@ -22,7 +20,7 @@ namespace smartDEN_IP_16_Relays_HTTP
             InitializeComponent();
             
             var timer = new Timer();
-            timer.Interval = 3000;
+            timer.Interval = 1000;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
 
@@ -50,85 +48,53 @@ namespace smartDEN_IP_16_Relays_HTTP
                 relay14.Text = iniFile.IniReadValue("Buttons", "Relay14");
                 relay15.Text = iniFile.IniReadValue("Buttons", "Relay15");
                 relay16.Text = iniFile.IniReadValue("Buttons", "Relay16");
-                relay101.Text = iniFile.IniReadValue("Buttons", "Relay101");
-                relay102.Text = iniFile.IniReadValue("Buttons", "Relay102");
-                relay103.Text = iniFile.IniReadValue("Buttons", "Relay103");
-                relay104.Text = iniFile.IniReadValue("Buttons", "Relay104");
-                relay105.Text = iniFile.IniReadValue("Buttons", "Relay105");
-                relay106.Text = iniFile.IniReadValue("Buttons", "Relay106");
-                relay107.Text = iniFile.IniReadValue("Buttons", "Relay107");
-                relay108.Text = iniFile.IniReadValue("Buttons", "Relay108");
-
+                checkBox1.Text = iniFile.IniReadValue("Buttons", "A1");
+                checkBox2.Text = iniFile.IniReadValue("Buttons", "A2");
+                checkBox3.Text = iniFile.IniReadValue("Buttons", "A3");
             }
 
             // Set the Hotkey triggerer the F9 key 
             // Expected an integer value for F9: 0x78, but you can convert the Keys.KEY to its int value
             // See: https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
-            int FirstHotKeyKey = (int)Keys.F9;
-            // Register the "F9" hotkey
-            Boolean F9Registered = RegisterHotKey(
-                this.Handle, 1, 0x0000, FirstHotKeyKey
-            );
-
-            // Repeat the same process but with F10
-            Boolean F10Registered = RegisterHotKey(
-                this.Handle, 2, 0x0000, (int)Keys.F10
-            );
-
-            bool ComaRegistered = RegisterHotKey(
-                this.Handle, 5, 0x0000, (int)Keys.Oemcomma
-            );
-
-            bool DotRegistered = RegisterHotKey(
-                this.Handle, 6, 0x0000, (int)Keys.OemPeriod
-            );
-
-            bool SemicolonRegistered = RegisterHotKey(
-                this.Handle, 7, 0x0000, (int)Keys.OemSemicolon
-            );
             
-            bool ApostropheRegistered = RegisterHotKey(
-                this.Handle, 8, 0x0000, (int)Keys.OemQuotes
-            );
-            bool TildeRegistered = RegisterHotKey(
-                this.Handle, 9, 0x0000, (int)Keys.Oemtilde
-            );
-
-
-            // Verify if both hotkeys were succesfully registered, if not, show message in the console
-            if (!F9Registered)
-            {
-                Console.WriteLine("Global Hotkey F9 couldn't be registered !");
-            }
-
-            if (!F10Registered)
-            {
-                Console.WriteLine("Global Hotkey F10 couldn't be registered !");
-            }
             
-            if (!ComaRegistered)
-            {
-                Console.WriteLine("Global Hotkey , couldn't be registered !");
+            if(!RegisterHotKey(this.Handle, 1, 0x0000, (int)Keys.NumPad1)){
+                Console.WriteLine("Global Hotkey '1' couldn't be registered !");
             }
 
-            if (!DotRegistered)
+            if (!RegisterHotKey(this.Handle, 2, 0x0000, (int)Keys.NumPad2))
             {
-                Console.WriteLine("Global Hotkey . couldn't be registered !");
+                Console.WriteLine("Global Hotkey '2' couldn't be registered !");
             }
 
-            if (!SemicolonRegistered)
+            if (!RegisterHotKey(this.Handle, 3, 0x0000, (int)Keys.NumPad3))
             {
-                Console.WriteLine("Global Hotkey ; couldn't be registered !");
+                Console.WriteLine("Global Hotkey '3' couldn't be registered !");
             }
 
-            if (!ApostropheRegistered)
+            if (!RegisterHotKey(this.Handle, 4, 0x0000, (int)Keys.NumPad4))
             {
-                Console.WriteLine("Global Hotkey ' couldn't be registered !");
+                Console.WriteLine("Global Hotkey '4' couldn't be registered !");
             }
 
-            if (!TildeRegistered)
+            if (!RegisterHotKey(this.Handle, 5, 0x0000, (int)Keys.NumPad5))
             {
-                Console.WriteLine("Global Hotkey ` couldn't be registered !");
+                Console.WriteLine("Global Hotkey '5' couldn't be registered !");
+            }
+
+            if (!RegisterHotKey(this.Handle, 7, 0x0000, (int)Keys.NumPad7))
+            {
+                Console.WriteLine("Global Hotkey '7' couldn't be registered !");
+            }
+
+            if (!RegisterHotKey(this.Handle, 8, 0x0000, (int)Keys.NumPad8))
+            {
+                Console.WriteLine("Global Hotkey '8' couldn't be registered !");
+            }
+
+            if (!RegisterHotKey(this.Handle, 9, 0x0000, (int)Keys.NumPad9))
+            {
+                Console.WriteLine("Global Hotkey '9' couldn't be registered !");
             }
         }
 
@@ -143,47 +109,35 @@ namespace smartDEN_IP_16_Relays_HTTP
             if (m.Msg == 0x0312 && isConnected && !hotKeyLock)
             {
                 int id = m.WParam.ToInt32();
-                // MessageBox.Show(string.Format("Hotkey #{0} pressed", id));
+                //MessageBox.Show(string.Format("Hotkey #{0} pressed", id));
 
                 hotKeyLock = true;
                 // Handle what will happen once a respective hotkey is pressed                
                 switch (id)
                 {
-                    case 1:                        
-                        updateStates(GetStateRequest("&Relay6=0"));                        
+                    case 1:
+                        relay13.Checked = !relay13.Checked;
                         break;
-                    case 2:                        
-                        updateStates(GetStateRequest("&Relay6=1"));
+                    case 2:
+                        relay14.Checked = !relay14.Checked;
                         break;
                     case 3:
-                        lastActiveRelayId += 1;
-                        lastActiveRelayId = (((lastActiveRelayId % 8) + 8) % 8);
-                        lastActiveRelayId += 8;
-                        disableOtherHalf(lastActiveRelayId + 1);
-                        updateStates(GetStateRequest("&Relay" + (lastActiveRelayId + 1) + "=1"));
+                        relay15.Checked = !relay15.Checked;
                         break;
                     case 4:
-                        lastActiveRelayId -= 1;
-                        lastActiveRelayId = (((lastActiveRelayId % 8) + 8) % 8);
-                        lastActiveRelayId += 8;
-                        disableOtherHalf(lastActiveRelayId + 1);
-                        updateStates(GetStateRequest("&Relay" + (lastActiveRelayId + 1) + "=1"));
+                        relay16.Checked = !relay16.Checked;
                         break;
                     case 5:
-                        updateStates(GetStateRequest("&Relay1=" + Convert.ToInt32(!relay1.Checked).ToString()));
-                        break;
-                    case 6:
-                        updateStates(GetStateRequest("&Relay2=" + Convert.ToInt32(!relay2.Checked).ToString()));
+                        relay8.Checked = !relay8.Checked;                        
                         break;
                     case 7:
-                        updateStates(GetStateRequest("&Relay3=" + Convert.ToInt32(!relay3.Checked).ToString()));
+                        updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=1&Relay4=1"));
                         break;
                     case 8:
+                        updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=0&Relay4=1"));
+                        break;
                     case 9:
-                        updateStates(GetStateRequest("&Relay4=1"));
-                        updateStates(GetStateRequest("&Relay1=1"));
-                        updateStates(GetStateRequest("&Relay2=1"));
-                        updateStates(GetStateRequest("&Relay3=1"));                        
+                        updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=0&Relay4=1"));
                         break;
                 }
                 hotKeyLock = false;
@@ -239,7 +193,7 @@ namespace smartDEN_IP_16_Relays_HTTP
         public string GetStateRequest(string parameter)
         {
             //statusLabel.Text = "Connecting...";
-            statusBox.BackColor = Color.Red;
+            //statusBox.BackColor = Color.Red;
             //relaysGroupBox.Enabled = false;
             Application.DoEvents();
             string url = "http://" + ipTextBox.Text + ":" + portTextBox.Text + "/current_state.xml?pw=" + passwordTextBox.Text + parameter;
@@ -262,6 +216,7 @@ namespace smartDEN_IP_16_Relays_HTTP
                 if ("http://" + ipTextBox.Text + ":" + portTextBox.Text + "/login_info.xml" == response.ResponseUri.ToString())
                     return "Already Logged";
                 relaysGroupBox.Enabled = true;
+                statusLabel.Text = "";
                 return responseFromServer;
             }
             catch (Exception)
@@ -283,7 +238,7 @@ namespace smartDEN_IP_16_Relays_HTTP
                 int startIndex = 0;
                 int endIndex = 0;
                 string thisInput;
-                string state = "<State>";
+                string state = "<State>";                
 
                 for (int i = 1; i < 17; i++)
                 {
@@ -299,39 +254,42 @@ namespace smartDEN_IP_16_Relays_HTTP
                     currentRelay.Checked = Convert.ToBoolean(Int32.Parse(data.Substring(startIndex, endIndex - startIndex)));
                     if (currentRelay.Checked)
                     {
-                        currentRelay.BackColor = Color.Chartreuse;
-                        if (i < 9)
-                        {
-                            var mirrorRelay = (CheckBox)this.Controls.Find("relay" + (i + 100), true)[0];
-                            mirrorRelay.BackColor = SystemColors.ControlLight;
-                        }
+                        currentRelay.BackColor = Color.Chartreuse;                        
                     }
                     else
                     {
-                        currentRelay.BackColor = SystemColors.ControlLight;
-                        if (i < 9)
-                        {
-                            var mirrorRelay = (CheckBox)this.Controls.Find("relay" + (i + 100), true)[0];
-                            mirrorRelay.BackColor = Color.Chartreuse;
-                        }
+                        currentRelay.BackColor = SystemColors.ControlLight;                        
                     }
                 }
-                userClick = true;
-            }
-        }
 
-        public void disableOtherHalf(int clickedRelayId)
-        {
-            for (int i = 9; i < 17; i++)
-            {
-                if (i == clickedRelayId)
-                    continue;
-
-                CheckBox currentRelay = (CheckBox)this.Controls.Find("relay" + i, true)[0];
-                if (currentRelay.Checked)
+                if (!relay1.Checked && !relay2.Checked && relay3.Checked && relay4.Checked)
                 {
-                    GetStateRequest("&Relay" + i + "=0");
+                    checkBox1.BackColor = Color.Chartreuse;
                 }
+                else
+                {
+                    checkBox1.BackColor = SystemColors.ControlLight;
+                }
+
+                if (!relay1.Checked && relay2.Checked && !relay3.Checked && relay4.Checked)
+                {
+                    checkBox2.BackColor = Color.Chartreuse;
+                }
+                else
+                {
+                    checkBox2.BackColor = SystemColors.ControlLight;
+                }
+
+                if (relay1.Checked && !relay2.Checked && !relay3.Checked && relay4.Checked)
+                {
+                    checkBox3.BackColor = Color.Chartreuse;
+                }
+                else
+                {
+                    checkBox3.BackColor = SystemColors.ControlLight;
+                }
+
+                userClick = true;
             }
         }
 
@@ -358,12 +316,6 @@ namespace smartDEN_IP_16_Relays_HTTP
             if (userClick == true)
             {
                 updateStates(GetStateRequest("&Relay4=" + Convert.ToInt32(relay4.Checked).ToString()));
-                if (relay4.Checked)
-                {
-                    updateStates(GetStateRequest("&Relay1=1"));
-                    updateStates(GetStateRequest("&Relay2=1"));
-                    updateStates(GetStateRequest("&Relay3=1"));
-                }
             }
         }
 
@@ -388,27 +340,30 @@ namespace smartDEN_IP_16_Relays_HTTP
         private void relay8_CheckedChanged(object sender, EventArgs e)
         {
             if (userClick == true)
-                updateStates(GetStateRequest("&Relay8=" + Convert.ToInt32(relay8.Checked).ToString()));
+            {
+                if (relay8.Checked)
+                {
+                    updateStates(GetStateRequest("&Relay8=1&Relay14=0&Relay15=0&Relay16=0&Relay13=0"));
+                }
+                else
+                {
+                    updateStates(GetStateRequest("&Relay8=0"));                    
+                }
+            }
         }
 
         private void relay9_CheckedChanged(object sender, EventArgs e)
         {
-
             if (userClick == true)
-            {
-                if (relay9.Checked)
-                    disableOtherHalf(9);
+            {                
                 updateStates(GetStateRequest("&Relay9=" + Convert.ToInt32(relay9.Checked).ToString()));
             }
         }
 
         private void relay10_CheckedChanged(object sender, EventArgs e)
         {
-
             if (userClick == true)
             {
-                if (relay10.Checked)
-                    disableOtherHalf(10);
                 updateStates(GetStateRequest("&Relay10=" + Convert.ToInt32(relay10.Checked).ToString()));
             }
         }
@@ -417,8 +372,6 @@ namespace smartDEN_IP_16_Relays_HTTP
         {
             if (userClick == true)
             {
-                if (relay11.Checked)
-                    disableOtherHalf(11);
                 updateStates(GetStateRequest("&Relay11=" + Convert.ToInt32(relay11.Checked).ToString()));
             }
         }
@@ -427,8 +380,6 @@ namespace smartDEN_IP_16_Relays_HTTP
         {
             if (userClick == true)
             {
-                if (relay12.Checked)
-                    disableOtherHalf(12);
                 updateStates(GetStateRequest("&Relay12=" + Convert.ToInt32(relay12.Checked).ToString()));
             }
         }
@@ -439,100 +390,74 @@ namespace smartDEN_IP_16_Relays_HTTP
             if (userClick == true)
             {
                 if (relay13.Checked)
-                    disableOtherHalf(13);
-                updateStates(GetStateRequest("&Relay13=" + Convert.ToInt32(relay13.Checked).ToString()));
+                {
+                    updateStates(GetStateRequest("&Relay13=1&Relay14=0&Relay15=0&Relay16=0&Relay8=0"));
+                }
+                else
+                {
+                    updateStates(GetStateRequest("&Relay13=0"));
+                }
             }
         }
 
         private void relay14_CheckedChanged(object sender, EventArgs e)
         {
-
             if (userClick == true)
             {
                 if (relay14.Checked)
-                    disableOtherHalf(14);
-                updateStates(GetStateRequest("&Relay14=" + Convert.ToInt32(relay14.Checked).ToString()));
+                {
+                    updateStates(GetStateRequest("&Relay14=1&Relay13=0&Relay15=0&Relay16=0&Relay8=0"));
+                }
+                else
+                {
+                    updateStates(GetStateRequest("&Relay14=0"));
+                }
             }
         }
 
         private void relay15_CheckedChanged(object sender, EventArgs e)
         {
-
             if (userClick == true)
             {
                 if (relay15.Checked)
-                    disableOtherHalf(15);
-                updateStates(GetStateRequest("&Relay15=" + Convert.ToInt32(relay15.Checked).ToString()));
+                {
+                    updateStates(GetStateRequest("&Relay15=1&Relay14=0&Relay13=0&Relay16=0&Relay8=0"));
+                }
+                else
+                {
+                    updateStates(GetStateRequest("&Relay15=0"));
+                }
             }
         }
 
         private void relay16_CheckedChanged(object sender, EventArgs e)
         {
-
             if (userClick == true)
             {
                 if (relay16.Checked)
-                    disableOtherHalf(16);
-                updateStates(GetStateRequest("&Relay16=" + Convert.ToInt32(relay16.Checked).ToString()));
+                {
+                    updateStates(GetStateRequest("&Relay16=1&Relay14=0&Relay13=0&Relay15=0&Relay8=0"));
+                }
+                else
+                {
+                    updateStates(GetStateRequest("&Relay16=0"));
+                }
             }
         }
 
-        private void relay106_CheckedChanged(object sender, EventArgs e)
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (userClick == true)
-                updateStates(GetStateRequest("&Relay6=" + Convert.ToInt32(!relay6.Checked).ToString()));
+            updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=1&Relay4=1"));
         }
 
-        private void relay12_CheckedChanged_1(object sender, EventArgs e)
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (userClick == true)
-            {
-                if (relay12.Checked)
-                    disableOtherHalf(12);
-                updateStates(GetStateRequest("&Relay12=" + Convert.ToInt32(relay12.Checked).ToString()));
-            }
+            updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=0&Relay4=1"));
         }
 
-        private void relay101_CheckedChanged(object sender, EventArgs e)
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            if (userClick == true)
-                updateStates(GetStateRequest("&Relay1=" + Convert.ToInt32(!relay1.Checked).ToString()));
-        }
-
-        private void relay102_CheckedChanged(object sender, EventArgs e)
-        {
-            if (userClick == true)
-                updateStates(GetStateRequest("&Relay2=" + Convert.ToInt32(!relay2.Checked).ToString()));
-        }
-
-        private void relay103_CheckedChanged(object sender, EventArgs e)
-        {
-            if (userClick == true)
-                updateStates(GetStateRequest("&Relay3=" + Convert.ToInt32(!relay3.Checked).ToString()));
-        }
-
-        private void relay104_CheckedChanged(object sender, EventArgs e)
-        {
-            if (userClick == true)
-                updateStates(GetStateRequest("&Relay4=" + Convert.ToInt32(!relay4.Checked).ToString()));
-        }
-
-        private void relay105_CheckedChanged(object sender, EventArgs e)
-        {
-            if (userClick == true)
-                updateStates(GetStateRequest("&Relay5=" + Convert.ToInt32(!relay5.Checked).ToString()));
-        }
-
-        private void relay107_CheckedChanged(object sender, EventArgs e)
-        {
-            if (userClick == true)
-                updateStates(GetStateRequest("&Relay7=" + Convert.ToInt32(!relay7.Checked).ToString()));
-        }
-
-        private void relay108_CheckedChanged(object sender, EventArgs e)
-        {
-            if (userClick == true)
-                updateStates(GetStateRequest("&Relay8=" + Convert.ToInt32(!relay8.Checked).ToString()));
+            updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=0&Relay4=1"));
         }
     }
 }
