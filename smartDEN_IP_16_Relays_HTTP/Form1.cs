@@ -96,6 +96,25 @@ namespace smartDEN_IP_16_Relays_HTTP
             {
                 Console.WriteLine("Global Hotkey '9' couldn't be registered !");
             }
+
+            
+            if (!RegisterHotKey(this.Handle, 10, 0x0000, (int)Keys.Divide))
+            {
+                Console.WriteLine("Global Hotkey '10' couldn't be registered !");
+            }
+            if (!RegisterHotKey(this.Handle, 11, 0x0000, (int)Keys.Multiply))
+            {
+                Console.WriteLine("Global Hotkey '11' couldn't be registered !");
+            }            
+            if (!RegisterHotKey(this.Handle, 12, 0x0000, (int)Keys.Subtract))
+            {
+                Console.WriteLine("Global Hotkey '12' couldn't be registered !");
+            }
+            if (!RegisterHotKey(this.Handle, 13, 0x0000, (int)Keys.Add))
+            {
+                Console.WriteLine("Global Hotkey '13' couldn't be registered !");
+            }
+            
         }
 
         public void timer_Tick(object sender, EventArgs e)
@@ -104,7 +123,7 @@ namespace smartDEN_IP_16_Relays_HTTP
         }
 
         protected override void WndProc(ref Message m)
-        {
+        {   
             // Catch when a HotKey is pressed !
             if (m.Msg == 0x0312 && isConnected && !hotKeyLock)
             {
@@ -116,28 +135,47 @@ namespace smartDEN_IP_16_Relays_HTTP
                 switch (id)
                 {
                     case 1:
-                        relay13.Checked = !relay13.Checked;
+                        relay13.Checked = true;
                         break;
                     case 2:
-                        relay14.Checked = !relay14.Checked;
+                        relay14.Checked = true;
                         break;
                     case 3:
-                        relay15.Checked = !relay15.Checked;
+                        relay15.Checked = true;
                         break;
                     case 4:
-                        relay16.Checked = !relay16.Checked;
+                        relay16.Checked = true;
                         break;
                     case 5:
-                        relay8.Checked = !relay8.Checked;                        
+                        relay8.Checked = true;
                         break;
                     case 7:
+                        // A1
                         updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=1&Relay4=1"));
                         break;
                     case 8:
+                        // A2
                         updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=0&Relay4=1"));
                         break;
                     case 9:
+                        // A3
                         updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=0&Relay4=1"));
+                        break;
+                    case 10:
+                        // A1, A2
+                        updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=1&Relay4=1"));
+                        break;
+                    case 11:
+                        // A2, A3                        
+                        updateStates(GetStateRequest("&Relay1=1&Relay2=1&Relay3=0&Relay4=1"));
+                        break;
+                    case 12:
+                        // A1, A3                        
+                        updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=1&Relay4=1"));
+                        break;                        
+                    case 13:
+                        // A1, A2, A3
+                        updateStates(GetStateRequest("&Relay1=1&Relay2=1&Relay3=1&Relay4=1"));
                         break;
                 }
                 hotKeyLock = false;
@@ -262,7 +300,7 @@ namespace smartDEN_IP_16_Relays_HTTP
                     }
                 }
 
-                if (!relay1.Checked && !relay2.Checked && relay3.Checked && relay4.Checked)
+                if (relay3.Checked && relay4.Checked)
                 {
                     checkBox1.BackColor = Color.Chartreuse;
                 }
@@ -271,7 +309,7 @@ namespace smartDEN_IP_16_Relays_HTTP
                     checkBox1.BackColor = SystemColors.ControlLight;
                 }
 
-                if (!relay1.Checked && relay2.Checked && !relay3.Checked && relay4.Checked)
+                if (relay2.Checked && relay4.Checked)
                 {
                     checkBox2.BackColor = Color.Chartreuse;
                 }
@@ -280,7 +318,7 @@ namespace smartDEN_IP_16_Relays_HTTP
                     checkBox2.BackColor = SystemColors.ControlLight;
                 }
 
-                if (relay1.Checked && !relay2.Checked && !relay3.Checked && relay4.Checked)
+                if (relay1.Checked && relay4.Checked)
                 {
                     checkBox3.BackColor = Color.Chartreuse;
                 }
@@ -341,14 +379,7 @@ namespace smartDEN_IP_16_Relays_HTTP
         {
             if (userClick == true)
             {
-                if (relay8.Checked)
-                {
-                    updateStates(GetStateRequest("&Relay8=1&Relay14=0&Relay15=0&Relay16=0&Relay13=0"));
-                }
-                else
-                {
-                    updateStates(GetStateRequest("&Relay8=0"));                    
-                }
+                updateStates(GetStateRequest("&Relay8=1&Relay14=0&Relay15=0&Relay16=0&Relay13=0"));                
             }
         }
 
@@ -389,6 +420,9 @@ namespace smartDEN_IP_16_Relays_HTTP
 
             if (userClick == true)
             {
+                updateStates(GetStateRequest("&Relay13=1&Relay14=0&Relay15=0&Relay16=0&Relay8=0"));
+
+                /*
                 if (relay13.Checked)
                 {
                     updateStates(GetStateRequest("&Relay13=1&Relay14=0&Relay15=0&Relay16=0&Relay8=0"));
@@ -397,6 +431,7 @@ namespace smartDEN_IP_16_Relays_HTTP
                 {
                     updateStates(GetStateRequest("&Relay13=0"));
                 }
+                */
             }
         }
 
@@ -404,6 +439,9 @@ namespace smartDEN_IP_16_Relays_HTTP
         {
             if (userClick == true)
             {
+                updateStates(GetStateRequest("&Relay14=1&Relay13=0&Relay15=0&Relay16=0&Relay8=0"));
+
+                /*
                 if (relay14.Checked)
                 {
                     updateStates(GetStateRequest("&Relay14=1&Relay13=0&Relay15=0&Relay16=0&Relay8=0"));
@@ -412,13 +450,18 @@ namespace smartDEN_IP_16_Relays_HTTP
                 {
                     updateStates(GetStateRequest("&Relay14=0"));
                 }
+                */
             }
         }
 
         private void relay15_CheckedChanged(object sender, EventArgs e)
-        {
+        {   
+            
             if (userClick == true)
             {
+                updateStates(GetStateRequest("&Relay15=1&Relay14=0&Relay13=0&Relay16=0&Relay8=0"));
+
+                /*
                 if (relay15.Checked)
                 {
                     updateStates(GetStateRequest("&Relay15=1&Relay14=0&Relay13=0&Relay16=0&Relay8=0"));
@@ -427,13 +470,17 @@ namespace smartDEN_IP_16_Relays_HTTP
                 {
                     updateStates(GetStateRequest("&Relay15=0"));
                 }
-            }
+                */
+            }            
         }
 
         private void relay16_CheckedChanged(object sender, EventArgs e)
         {
             if (userClick == true)
             {
+                updateStates(GetStateRequest("&Relay16=1&Relay14=0&Relay13=0&Relay15=0&Relay8=0"));
+
+                /*
                 if (relay16.Checked)
                 {
                     updateStates(GetStateRequest("&Relay16=1&Relay14=0&Relay13=0&Relay15=0&Relay8=0"));
@@ -442,6 +489,7 @@ namespace smartDEN_IP_16_Relays_HTTP
                 {
                     updateStates(GetStateRequest("&Relay16=0"));
                 }
+                */
             }
         }
 
