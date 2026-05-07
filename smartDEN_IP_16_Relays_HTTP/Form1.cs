@@ -131,54 +131,60 @@ namespace smartDEN_IP_16_Relays_HTTP
                 //MessageBox.Show(string.Format("Hotkey #{0} pressed", id));
 
                 hotKeyLock = true;
-                // Handle what will happen once a respective hotkey is pressed                
-                switch (id)
+                try
                 {
-                    case 1:
-                        relay13.Checked = true;
-                        break;
-                    case 2:
-                        relay14.Checked = true;
-                        break;
-                    case 3:
-                        relay15.Checked = true;
-                        break;
-                    case 4:
-                        relay16.Checked = true;
-                        break;
-                    case 5:
-                        relay8.Checked = true;
-                        break;
-                    case 7:
-                        // A1
-                        updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=1&Relay4=1"));
-                        break;
-                    case 8:
-                        // A2
-                        updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=0&Relay4=1"));
-                        break;
-                    case 9:
-                        // A3
-                        updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=0&Relay4=1"));
-                        break;
-                    case 10:
-                        // A1, A2
-                        updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=1&Relay4=1"));
-                        break;
-                    case 11:
-                        // A2, A3                        
-                        updateStates(GetStateRequest("&Relay1=1&Relay2=1&Relay3=0&Relay4=1"));
-                        break;
-                    case 12:
-                        // A1, A3                        
-                        updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=1&Relay4=1"));
-                        break;                        
-                    case 13:
-                        // A1, A2, A3
-                        updateStates(GetStateRequest("&Relay1=1&Relay2=1&Relay3=1&Relay4=1"));
-                        break;
+                    // Handle what will happen once a respective hotkey is pressed
+                    switch (id)
+                    {
+                        case 1:
+                            relay13.Checked = true;
+                            break;
+                        case 2:
+                            relay14.Checked = true;
+                            break;
+                        case 3:
+                            relay15.Checked = true;
+                            break;
+                        case 4:
+                            relay16.Checked = true;
+                            break;
+                        case 5:
+                            relay8.Checked = true;
+                            break;
+                        case 7:
+                            // A1
+                            updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=1&Relay4=1"));
+                            break;
+                        case 8:
+                            // A2
+                            updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=0&Relay4=1"));
+                            break;
+                        case 9:
+                            // A3
+                            updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=0&Relay4=1"));
+                            break;
+                        case 10:
+                            // A1, A2
+                            updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=1&Relay4=1"));
+                            break;
+                        case 11:
+                            // A2, A3
+                            updateStates(GetStateRequest("&Relay1=1&Relay2=1&Relay3=0&Relay4=1"));
+                            break;
+                        case 12:
+                            // A1, A3
+                            updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=1&Relay4=1"));
+                            break;
+                        case 13:
+                            // A1, A2, A3
+                            updateStates(GetStateRequest("&Relay1=1&Relay2=1&Relay3=1&Relay4=1"));
+                            break;
+                    }
                 }
-                hotKeyLock = false;
+                finally
+                {
+                    hotKeyLock = false;
+                }
             }
 
             base.WndProc(ref m);
@@ -261,6 +267,7 @@ namespace smartDEN_IP_16_Relays_HTTP
             {
                 relaysGroupBox.Enabled = false;
                 refreshButton.Text = "Connect";
+                isConnected = false;
                 statusLabel.Text = "Failed to connect.";
                 statusBox.BackColor = Color.Red;
                 request.Abort();
