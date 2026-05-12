@@ -152,32 +152,32 @@ namespace smartDEN_IP_16_Relays_HTTP
                             relay8.Checked = true;
                             break;
                         case 7:
-                            // A1
-                            updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=1&Relay4=1"));
+                            // Ant1
+                            updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=0&Relay4=1"));
                             break;
                         case 8:
-                            // A2
+                            // Ant2
                             updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=0&Relay4=1"));
                             break;
                         case 9:
-                            // A3
-                            updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=0&Relay4=1"));
+                            // Ant3
+                            updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=1&Relay4=1"));
                             break;
                         case 10:
-                            // A1, A2
-                            updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=1&Relay4=1"));
+                            // Ant1 + Ant2
+                            updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=1&Relay4=0"));
                             break;
                         case 11:
-                            // A2, A3
-                            updateStates(GetStateRequest("&Relay1=1&Relay2=1&Relay3=0&Relay4=1"));
+                            // Ant2 + Ant3
+                            updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=0&Relay4=0"));
                             break;
                         case 12:
-                            // A1, A3
-                            updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=1&Relay4=1"));
+                            // Ant1 + Ant3
+                            updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=0&Relay4=0"));
                             break;
                         case 13:
-                            // A1, A2, A3
-                            updateStates(GetStateRequest("&Relay1=1&Relay2=1&Relay3=1&Relay4=1"));
+                            // Ant1 + Ant2 + Ant3
+                            updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=0&Relay4=0"));
                             break;
                     }
                 }
