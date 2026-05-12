@@ -359,7 +359,7 @@
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(49, 13);
             this.versionLabel.TabIndex = 3;
-            this.versionLabel.Text = "24.02.16";
+            this.versionLabel.Text = "26.05.12";
             // 
             // statusBox
             // 

@@ -152,32 +152,32 @@ namespace smartDEN_IP_16_Relays_HTTP
                             relay8.Checked = true;
                             break;
                         case 7:
-                            // A1
-                            updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=1&Relay4=1"));
+                            // Ant1
+                            updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=0&Relay4=1"));
                             break;
                         case 8:
-                            // A2
+                            // Ant2
                             updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=0&Relay4=1"));
                             break;
                         case 9:
-                            // A3
-                            updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=0&Relay4=1"));
+                            // Ant3
+                            updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=1&Relay4=1"));
                             break;
                         case 10:
-                            // A1, A2
-                            updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=1&Relay4=1"));
+                            // Ant1 + Ant2
+                            updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=1&Relay4=0"));
                             break;
                         case 11:
-                            // A2, A3
-                            updateStates(GetStateRequest("&Relay1=1&Relay2=1&Relay3=0&Relay4=1"));
+                            // Ant2 + Ant3
+                            updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=0&Relay4=0"));
                             break;
                         case 12:
-                            // A1, A3
-                            updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=1&Relay4=1"));
+                            // Ant1 + Ant3
+                            updateStates(GetStateRequest("&Relay1=0&Relay2=1&Relay3=0&Relay4=0"));
                             break;
                         case 13:
-                            // A1, A2, A3
-                            updateStates(GetStateRequest("&Relay1=1&Relay2=1&Relay3=1&Relay4=1"));
+                            // Ant1 + Ant2 + Ant3
+                            updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=0&Relay4=0"));
                             break;
                     }
                 }
@@ -307,32 +307,24 @@ namespace smartDEN_IP_16_Relays_HTTP
                     }
                 }
 
-                if (relay3.Checked && relay4.Checked)
+                bool a1 = false, a2 = false, a3 = false;
+                if (relay4.Checked)
                 {
-                    checkBox1.BackColor = Color.Chartreuse;
+                    if (relay1.Checked && !relay2.Checked && !relay3.Checked) a1 = true;
+                    else if (!relay1.Checked && relay2.Checked && !relay3.Checked) a2 = true;
+                    else if (!relay1.Checked && !relay2.Checked && relay3.Checked) a3 = true;
                 }
                 else
                 {
-                    checkBox1.BackColor = SystemColors.ControlLight;
+                    if (!relay1.Checked && !relay2.Checked && relay3.Checked) { a1 = true; a2 = true; }
+                    else if (relay1.Checked && !relay2.Checked && !relay3.Checked) { a2 = true; a3 = true; }
+                    else if (!relay1.Checked && relay2.Checked && !relay3.Checked) { a1 = true; a3 = true; }
+                    else if (!relay1.Checked && !relay2.Checked && !relay3.Checked) { a1 = true; a2 = true; a3 = true; }
                 }
 
-                if (relay2.Checked && relay4.Checked)
-                {
-                    checkBox2.BackColor = Color.Chartreuse;
-                }
-                else
-                {
-                    checkBox2.BackColor = SystemColors.ControlLight;
-                }
-
-                if (relay1.Checked && relay4.Checked)
-                {
-                    checkBox3.BackColor = Color.Chartreuse;
-                }
-                else
-                {
-                    checkBox3.BackColor = SystemColors.ControlLight;
-                }
+                checkBox1.BackColor = a1 ? Color.Chartreuse : SystemColors.ControlLight;
+                checkBox2.BackColor = a2 ? Color.Chartreuse : SystemColors.ControlLight;
+                checkBox3.BackColor = a3 ? Color.Chartreuse : SystemColors.ControlLight;
 
                 userClick = true;
             }
@@ -502,7 +494,7 @@ namespace smartDEN_IP_16_Relays_HTTP
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=1&Relay4=1"));
+            updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=0&Relay4=1"));
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -512,7 +504,7 @@ namespace smartDEN_IP_16_Relays_HTTP
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            updateStates(GetStateRequest("&Relay1=1&Relay2=0&Relay3=0&Relay4=1"));
+            updateStates(GetStateRequest("&Relay1=0&Relay2=0&Relay3=1&Relay4=1"));
         }
     }
 }
